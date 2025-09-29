@@ -1,0 +1,2 @@
+text = Fadzree
+print(text)
