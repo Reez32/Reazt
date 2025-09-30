@@ -394,3 +394,29 @@ elif page == "final_results":
 else:
     # fallback
     intro()
+
+# Map each show/debut group to a song URL (YouTube or local .mp3 file)
+debut_songs = {
+    "I-LAND": "https://youtu.be/wXFLzODIdUI?si=29UVqu5-89rR3peU",
+    "Produce 101": "https://youtu.be/ItAaHThDN1g?si=_CacQwH-Oi4uu0Oo",
+    "Produce 101 (S2)": "https://youtu.be/EVaV7AwqBWg?si=2U69TNLJ9m4ZF_rS",
+    "Sixteen": "https://youtu.be/kOHB85vDuow?si=tWk5CHclpga9DUcn",
+    "Girls Planet 999": "https://youtu.be/n0j5NPptyM0?si=-CYC6nQdpaPC62Ka",
+    "Boys Planet": "https://youtu.be/trzeUClQIIg?si=G3K2NkJTIzuA8KML",
+    "Dream Academy": "https://youtu.be/YH6YPPE56RQ?si=MOLkxkCkDsO013OO",
+    "RUNext": "https://youtu.be/Vk5-c_v4gMU?si=bAAg-dTLwMSy9gpr",
+    "Produce 48": "https://youtu.be/3ZCODapu3A4?si=NVNcr3l4Wp1V7bVC",
+    "Produce X101": "https://youtu.be/LlQEKB2H7z4?si=vP2g7zLMq-C1mfkm"
+}
+
+group_note = debut_groups.get(st.session_state.show, None)
+song_url = debut_songs.get(st.session_state.show, None)
+
+st.write("---")
+if group_note:
+    st.write(f"If this season produced a debut group, the canonical outcome for **{st.session_state.show}** is **{group_note}**.")
+    
+    if song_url:
+        st.markdown(f"[▶️ Listen to their fire song here!]({song_url})")
+else:
+    st.write(f"No known debut-group mapping for **{st.session_state.show}**.")
